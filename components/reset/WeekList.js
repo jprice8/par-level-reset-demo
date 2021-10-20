@@ -1,4 +1,5 @@
 import React from "react"
+import WeekPagination from "./WeekPagination"
 
 import ResetFooter from "./ResetFooter"
 import WeekRow from "./WeekRow"
@@ -27,7 +28,14 @@ const WeekList = ({ weeks }) => {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="bg-white shadow overflow-hidden sm:rounded-md mt-20">
-        <ul className="divide-y divide-gray-200">{newFormLinks}</ul>
+        {/* <ul className="divide-y divide-gray-200">{newFormLinks}</ul> */}
+        <WeekPagination 
+          data={results}
+          RenderComponent={WeekRow}
+          currentWeek={weeks}
+          pageLimit={5}
+          dataLimit={10}
+        />
         <ResetFooter 
           
         />

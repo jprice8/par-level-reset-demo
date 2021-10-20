@@ -38,7 +38,7 @@ const DashboardPanel = () => {
                       className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                       aria-hidden="true"
                     />
-                    Memorial Hospital
+                    {user.facility}
                   </dd>
                   <dt className="sr-only">Account Status</dt>
                   <dd className="mt-3 flex items-center text-sm text-gray-500 font-medium sm:mr-6 sm:mt-0 capitalize">

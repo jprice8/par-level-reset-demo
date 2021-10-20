@@ -22,7 +22,6 @@ const AltNavBar = ({ children }) => {
   const user = useSelector((state) => state.users)
 
   const router = useRouter()
-  console.log(router.pathname)
 
   // Function for checking whether the nav item is
   // currently selected.

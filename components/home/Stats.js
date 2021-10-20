@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { CashIcon, ClockIcon, TrendingDownIcon } from '@heroicons/react/outline'
+import { useSelector } from 'react-redux'
 
 import { usdTwoDigits } from '../../shared/utils/currencyHelper'
 
@@ -17,6 +18,7 @@ const demoStats = [
 ]
 
 const Stats = () => {
+  const pars = useSelector((state) => state.pars)
 
   return (
     <section className="lg:max-w-6xl lg:mx-auto pt-3">

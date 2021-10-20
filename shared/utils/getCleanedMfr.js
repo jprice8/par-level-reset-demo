@@ -23,7 +23,7 @@ export const getCleanedMfr = (mfr) => {
   const fresenius = new RegExp("^FRESENIUS*", "i")
   const ge = new RegExp("^GE MEDICAL*", "i")
   const greiner = new RegExp("^GREINER*", "i")
-  const halyard = new RegExp("*HALYARD*", "i")
+  const halyard = new RegExp("^HALYARD*", "i")
   const hologic = new RegExp("^HOLOGIC*", "i")
   const icumed = new RegExp("^ICU MEDICAL*", "i")
   const intuitive = new RegExp("^INTUITIVE*", "i")
