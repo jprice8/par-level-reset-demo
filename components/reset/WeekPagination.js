@@ -8,7 +8,7 @@ const WeekPagination = ({
   pageLimit,
   dataLimit,
 }) => {
-  const [pages] = useState(Math.round(data.length / dataLimit))
+  // const [pages] = useState(Math.round(data.length / dataLimit))
   const [currentPage, setCurrentPage] = useState(1)
 
   const goToNextPage = () => {
@@ -49,19 +49,35 @@ const WeekPagination = ({
 
       {/* Pagination */}
       <div className="border-t border-gray-200 text-center pb-2">
-        <button onClick={goToPreviousPage} className="border-t-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-          prev
-        </button>
+        {currentPage > 1 && (
+          <button
+            onClick={goToPreviousPage}
+            className="border-t-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-2 pt-4"
+          >
+            prev
+          </button>
+        )}
 
         {/* Page number */}
         {getPaginationGroup().map((item, index) => (
-          <button key={index} onClick={changePage} className="px-4 py-2">
+          <button
+            key={index}
+            onClick={changePage}
+            className={
+              currentPage === item
+                ? "border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+            }
+          >
             <span>{item}</span>
           </button>
         ))}
 
         {/* Next button */}
-        <button onClick={goToNextPage} className="px-4 py-2">
+        <button
+          onClick={goToNextPage}
+          className="border-t-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-2 pt-4"
+        >
           next
         </button>
       </div>

@@ -7,15 +7,13 @@ import { ChevronRightIcon } from "@heroicons/react/outline"
 const WeekRow = ({ currentWeek, weekNumber, submissionStatus }) => {
   const isHotLink = (weekNumber, currentWeek) => {
     if (weekNumber === currentWeek) {
-      console.log(`week number is ${weekNumber} current week is ${currentWeek}`)
       return `/resetForm/${weekNumber}`
     } else {
-      console.log(`week number is ${weekNumber} current week is ${currentWeek}`)
       return ""
     }
   }
   return (
-    <li>
+    <li className="cursor-pointer">
       <Link
         href={isHotLink(weekNumber, currentWeek)}
         className="block hover:bg-gray-50"

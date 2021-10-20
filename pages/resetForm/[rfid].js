@@ -26,8 +26,6 @@ const ResetForm = () => {
   const isUpdate = currentPar?.itemreset.resetLevel ? true : false
   const canSubmit = Boolean(newParLevel)
 
-  console.log()
-
   const onBackButton = () => {
     setNewParLevel("")
     setStepIndex(stepIndex - 1)

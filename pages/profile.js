@@ -28,16 +28,21 @@ const Profile = () => {
                 alt="profile-picture"
               />
             </div>
-            <div className="">
-              <div>
-                <h1>
+            <div className="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
+              <div className="sm:hidden 2xl:block mt-6 min-w-0 flex-1">
+                <h1 className="text-2xl font-bold text-gray-900 truncate">
                   {user.firstName} {user.lastName}
                 </h1>
-                <p>
+                <p className="text-md font-medium text-gray-500">
                   PLR user since {month} {day}, {year}
                 </p>
               </div>
-              <div></div>
+            </div>
+            <div className="hidden sm:block 2xl:hidden mt-6 min-w-0 flex-1">
+              <h1 className="text-2xl font-bold text-gray-900 truncate">
+                {user.firstName} {user.lastName}
+              </h1>
+              <p className="text-md font-medium text-gray-500">PLR user since {month} {day}, {year}</p>
             </div>
           </div>
         </div>
