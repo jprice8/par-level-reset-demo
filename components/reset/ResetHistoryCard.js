@@ -20,7 +20,7 @@ const ResetHistoryCard = ({ par, user }) => {
               {user.firstName} {user.lastName}
             </span>{" "}
             reset this par level to {par?.itemreset?.resetLevel} on{" "}
-            {month} {day}, {year} at {hour}:{minute} {suffix}.
+            {month} {day}, {year} at {hour}:{minute} {suffix} UTC.
           </p>
         </div>
       </div>

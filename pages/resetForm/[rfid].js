@@ -1,18 +1,25 @@
 import React, { useState } from "react"
 import { useRouter } from "next/router"
 import { useSelector, useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 import Stepper from "../../components/reset/Stepper"
 import ParStats from "../../components/reset/ParStats"
-import AccuracyToggle from "../../components/reset/AccuracyToggle"
 import ButtonGroup from "../../components/reset/buttons/ButtonGroup"
 import AltNavBar from "../../shared/components/AltNavBar"
 import { updateNestedItemReset } from "../../shared/redux/parsSlice"
 import ResetHistoryCard from "../../components/reset/ResetHistoryCard"
+import ErrorModal from "../../shared/components/ErrorModal"
 
 const ResetForm = () => {
-  const [newParLevel, setNewParLevel] = useState("")
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm()
+
   const [stepIndex, setStepIndex] = useState(1)
 
   const dispatch = useDispatch()
@@ -24,42 +31,44 @@ const ResetForm = () => {
 
   const currentPar = pars[stepIndex - 1]
   const isUpdate = currentPar?.itemreset.resetLevel ? true : false
-  const canSubmit = Boolean(newParLevel)
 
   const onBackButton = () => {
-    setNewParLevel("")
+    setValue("newParLevel", "")
     setStepIndex(stepIndex - 1)
   }
 
-  const onNextButton = () => {
-    if (newParLevel) {
-      dispatch(
-        updateNestedItemReset({
-          parId: currentPar.id,
-          userFirstName: user.firstName,
-          userLastName: user.lastName,
-          resetLevel: newParLevel,
-          lastUpdated: new Date().toISOString(),
-          week: rfid
-        })
-      )
+  // When the form is submitted:
+  // 1. Dispatch the update to reset slice
+  // 2. Inform the user of success and clear the UI input
+  // 3. If not the final step, move to the next step
+
+  const onSubmit = (data) => {
+    dispatch(
+      updateNestedItemReset({
+        parId: currentPar.id,
+        userFirstName: user.firstName,
+        userLastName: user.lastName,
+        resetLevel: parseInt(data.newParLevel),
+        lastUpdated: new Date().toISOString(),
+        week: rfid,
+      })
+    )
+    // Empty the UI input
+    setValue("newParLevel", "")
+
+    // If the final step in form...
+    if (stepIndex === 5) {
       // Confirm to user
-      toast.success(`Par reset to ${newParLevel}!`)
-      // Reset new par input
-      setNewParLevel("")
+      toast.success('Week completed, inventory is already looking lighter!')
+      setStepIndex(1)
+      // Take user back to dashboard
+      router.push("/")
+    } else {
+      // Confirm to user
+      toast.success(`Par reset to ${data.newParLevel}!`)
       // Move to next step in form
       setStepIndex(stepIndex + 1)
-    } else {
-      toast.error("Please set your desired par level before continuing!")
     }
-  }
-
-  const onSubmitButton = () => {
-    console.log(stepIndex)
-  }
-
-  const onFormSubmit = (e) => {
-    e.preventDefault()
   }
 
   return (
@@ -68,7 +77,7 @@ const ResetForm = () => {
 
       <div className="sm:max-w-4xl sm:mx-auto pt-10">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={onFormSubmit}>
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <ParStats stepIndex={stepIndex} par={currentPar} />
 
             <div className="sm:max-w-sm sm:mx-auto">
@@ -85,24 +94,35 @@ const ResetForm = () => {
                   id="newParLevel"
                   className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-600 rounded-md py-2 px-4"
                   placeholder={currentPar.currentParQty}
-                  value={newParLevel}
-                  onChange={(e) => setNewParLevel(e.target.value)}
-                  max={currentPar.currentParQty}
-                  min={1}
-                  required
+                  {...register("newParLevel", {
+                    required: true,
+                    validate: {
+                      minInput: (value) => parseInt(value) > 0,
+                      maxInput: (value) =>
+                        parseInt(value) <= currentPar.currentParQty,
+                    },
+                  })}
                 />
+                {errors.newParLevel &&
+                  errors.newParLevel.type === "minInput" && (
+                    <ErrorModal
+                      errorMessage={"Your input must be a positive integer."}
+                    />
+                  )}
+                {errors.newParLevel &&
+                  errors.newParLevel.type === "maxInput" && (
+                    <ErrorModal
+                      errorMessage={
+                        "Your input must be less than your current on hand quantity."
+                      }
+                    />
+                  )}
               </div>
             </div>
 
             {isUpdate && <ResetHistoryCard par={currentPar} user={user} />}
 
-            <ButtonGroup
-              stepIndex={stepIndex}
-              onBackButton={onBackButton}
-              onNextButton={onNextButton}
-              onSubmitButton={onSubmitButton}
-              canSubmit={canSubmit}
-            />
+            <ButtonGroup stepIndex={stepIndex} onBackButton={onBackButton} />
           </form>
         </div>
       </div>
