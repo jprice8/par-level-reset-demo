@@ -8,9 +8,10 @@ import Stepper from "../../components/reset/Stepper"
 import ParStats from "../../components/reset/ParStats"
 import ButtonGroup from "../../components/reset/buttons/ButtonGroup"
 import AltNavBar from "../../shared/components/AltNavBar"
-import { updateNestedItemReset } from "../../shared/redux/parsSlice"
 import ResetHistoryCard from "../../components/reset/ResetHistoryCard"
 import ErrorModal from "../../shared/components/ErrorModal"
+import { updateNestedItemReset } from "../../shared/redux/parsSlice"
+import { updateSubmissionStatus } from "../../shared/redux/weeksSlice"
 
 const ResetForm = () => {
   const {
@@ -43,6 +44,7 @@ const ResetForm = () => {
   // 3. If not the final step, move to the next step
 
   const onSubmit = (data) => {
+    // Update reset 
     dispatch(
       updateNestedItemReset({
         parId: currentPar.id,
@@ -52,6 +54,10 @@ const ResetForm = () => {
         lastUpdated: new Date().toISOString(),
         week: rfid,
       })
+    )
+    // Update current week's submission status
+    dispatch(
+      updateSubmissionStatus({ weekNumber: parseInt(rfid) })
     )
     // Empty the UI input
     setValue("newParLevel", "")

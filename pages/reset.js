@@ -7,14 +7,14 @@ import ResetPanel from "../components/reset/ResetPanel"
 
 const Reset = () => {
   const date = new Date()
-  const week = getISOWeek(date)
+  const currentWeek = getISOWeek(date)
   const year = getYear(date)
 
   return (
     <AltNavBar>
-      <ResetPanel currentWeek={week} currentYear={year} />
+      <ResetPanel currentWeek={currentWeek} currentYear={year} />
 
-      <WeekList weeks={week} />
+      <WeekList currentWeek={currentWeek} />
     </AltNavBar>
   )
 }

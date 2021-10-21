@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { CashIcon, ClockIcon, TrendingDownIcon } from '@heroicons/react/outline'
 import { useSelector } from 'react-redux'
 
 import { usdTwoDigits } from '../../shared/utils/currencyHelper'
+import { 
+  calcExtReduction,
+  calcWeeksCompleted,
+  calcParsReset
+} from '../../shared/utils/dashboardStatsHelper'
 
 const icons = [
   <CashIcon className="h-6 w-6 text-white" aria-hidden="true" />,
@@ -11,19 +16,24 @@ const icons = [
   <TrendingDownIcon className="h-6 w-6 text-white" aria-hidden="true" />,
 ]
 
-const demoStats = [
-  { id: 1, metric: "Saved", value: 10000 },
-  { id: 2, metric: "Weeks", value: 8 },
-  { id: 3, metric: "Pars", value: 20 },
-]
-
 const Stats = () => {
   const pars = useSelector((state) => state.pars)
+  const weeks = useSelector((state) => state.weeks)
+
+  const reductionExt = calcExtReduction(pars)
+  const weeksCompleted = calcWeeksCompleted(weeks)
+  const parsReset = calcParsReset(pars)
+
+  const [metrics, setMetrics] = useState([
+    { id: 1, metric: "Saved", value: reductionExt },
+    { id: 2, metric: "Weeks", value: weeksCompleted },
+    { id: 3, metric: "Pars", value: parsReset },
+  ])
 
   return (
     <section className="lg:max-w-6xl lg:mx-auto pt-3">
       <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {demoStats.map((item) => (
+        {metrics.map((item) => (
           <div
             key={item.id}
             className="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden"

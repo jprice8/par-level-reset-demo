@@ -12,7 +12,6 @@ import { getCleanedMfr } from '../../shared/utils/getCleanedMfr'
 import { useSelector } from "react-redux"
 
 const StatsList = () => {
-  const resets = useSelector((state) => state.resets)
 
   const columns = React.useMemo(() => [
     {
@@ -73,7 +72,7 @@ const StatsList = () => {
             </div>
 
             <div className="shadow border-b border-200 sm:rounded-lg">
-              <Table columns={columns} data={resets} />
+              {/* <Table columns={columns} /> */}
             </div>
           </div>
         </div>
