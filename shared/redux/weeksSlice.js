@@ -1,24 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getISOWeek } from "date-fns"
-
-const initialState = []
+import { getWeekData } from "../utils/smocker"
 
 // Set up initial state for every week to date
-const date = new Date()
-const isoWeekNumber = getISOWeek(date)
-for (let i = 0; i < isoWeekNumber; i++) {
-  if (i === isoWeekNumber - 1) {
-    initialState.push({
-      weekNumber: i + 1,
-      submissionStatus: "New",
-    })
-  } else {
-    initialState.push({
-      weekNumber: i + 1,
-      submissionStatus: "Missed",
-    })
-  }
-}
+const initialState = getWeekData()
 
 export const weeksSlice = createSlice({
   name: "weeks",
