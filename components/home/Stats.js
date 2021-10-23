@@ -25,9 +25,9 @@ const Stats = () => {
   const parsReset = calcParsReset(pars)
 
   const [metrics, setMetrics] = useState([
-    { id: 1, metric: "Saved", value: reductionExt },
-    { id: 2, metric: "Weeks", value: weeksCompleted },
-    { id: 3, metric: "Pars", value: parsReset },
+    { id: 1, metric: "Inventory Reduced", value: reductionExt },
+    { id: 2, metric: "Weeks Completed", value: weeksCompleted },
+    { id: 3, metric: "Pars Reduced", value: parsReset },
   ])
 
   return (

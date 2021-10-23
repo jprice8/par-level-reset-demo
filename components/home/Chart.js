@@ -12,11 +12,11 @@ const Chart = () => {
   const [data, setData] = useState(getWeeklyReductionData(weeks, pars))
 
   const lineChartData = {
-    labels: labels,
+    labels: labels.slice(-8),
     datasets: [
       {
         label: "Inventory Reduction ($)",
-        data: data,
+        data: data.slice(-8),
         fill: false,
         tension: 0.4,
         backgroundColor: "#6366F1",
@@ -40,7 +40,7 @@ const Chart = () => {
     <section className="lg:max-w-6xl lg:mx-auto mt-10 hidden sm:block">
       <div className="bg-white rounded-lg">
         <div className="px-20 py-5">
-          <h1 className="text-2xl text-gray-500">2021 Inventory Reduction by Week</h1>
+          <h1 className="text-2xl text-gray-500">Rolling Eight Week View</h1>
           <Line data={lineChartData} options={options} />
         </div>
       </div>
