@@ -1,11 +1,11 @@
+import { format } from "date-fns"
 import React from "react"
-import { useSelector } from "react-redux"
-import { getFormattedDate } from '../../shared/utils/dateTimeHelper'
 
 const ResetHistoryCard = ({ par, user }) => {
-  const { month, day, year, hour, minute, suffix } = getFormattedDate(
-    par?.itemreset?.lastUpdated
-  )
+  const targetDate = new Date(par?.itemreset?.lastUpdated)
+
+  const formattedDate = format(targetDate, 'PPPpp')
+
   return (
     <div className="pt-5 sm:max-w-xl sm:mx-auto flex items-center flex-grow justify-center">
       <img
@@ -20,7 +20,7 @@ const ResetHistoryCard = ({ par, user }) => {
               {user.firstName} {user.lastName}
             </span>{" "}
             reset this par level to {par?.itemreset?.resetLevel} on{" "}
-            {month} {day}, {year} at {hour}:{minute} {suffix} UTC.
+            {formattedDate}
           </p>
         </div>
       </div>

@@ -88,10 +88,13 @@ const Table = ({ columns, data, getRowProps = defaultPropGetter }) => {
           Header: () => <div></div>,
           Cell: ({ row }) => (
             <Link
-              to={`${detailPath}${row.cells[1].value}`}
-              className="px-6 py-2 text-xs font-medium text-indigo-600 hover:text-indigo-900 tracking-wider cursor-pointer"
+              href={`/reviewStats/${row.cells[1].value}`}
             >
-              View
+              <a
+                className="px-6 py-2 text-xs font-medium text-indigo-600 hover:text-indigo-900 tracking-wider cursor-pointer hover:bg-gray-100 rounded-lg"
+              >
+                View
+              </a>
             </Link>
           ),
         },

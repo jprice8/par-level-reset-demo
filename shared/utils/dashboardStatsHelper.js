@@ -1,4 +1,5 @@
 import { getISOWeek } from "date-fns"
+import { usdTwoDigits } from './currencyHelper'
 
 export const calcExtReduction = (pars) => {
   // Reduction amount variable
@@ -30,7 +31,7 @@ export const calcWeeksCompleted = (weeks) => {
   // Loop through weeks
   for (let i = 0; i < weeks.length; i++) {
     // Check submission status for Submitted
-    if (weeks[i].submissionStatus === 'Submitted') {
+    if (weeks[i].submissionStatus === "Submitted") {
       weeksSubmitted++
     }
   }
@@ -56,4 +57,35 @@ export const calcParsReset = (pars) => {
   }
   // Return the number of pars reset
   return parsReset
+}
+
+export const getParsForStatList = (pars) => {
+  // The return pars array
+  let statsListPars = []
+
+  // Loop through pars and format for array
+  for (let i = 0; i < pars.length; i++) {
+    // We only want pars that have been reduced
+    if (pars[i].itemreset.resetLevel && pars[i].itemreset.resetLevel < pars[i].currentParQty) {
+      let tmp = {}
+      // Give tmp variable desired attributes of par
+      tmp.id = pars[i].id
+      tmp.week = pars[i].itemreset.week
+      tmp.year = pars[i].itemreset.year
+      tmp.mfr = pars[i].mfr
+      tmp.description = pars[i].description
+
+      // Calculate reduction ext
+      const currentExt = pars[i].currentParQty * pars[i].unitCost
+      const resetExt = pars[i].itemreset.resetLevel * pars[i].unitCost
+      const reductionExt = currentExt - resetExt
+      tmp.reductionExt = usdTwoDigits(reductionExt)
+
+      tmp.flagged = "No"
+
+      statsListPars.push(tmp)
+    }
+  }
+
+  return statsListPars
 }

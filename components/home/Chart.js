@@ -11,12 +11,6 @@ const Chart = () => {
   const [labels, setLabels] = useState(getWeekLabels(weeks))
   const [data, setData] = useState(getWeeklyReductionData(weeks, pars))
 
-  useEffect(() => {
-    console.log('Use effect called')
-    setData(getWeeklyReductionData(weeks, pars))
-    console.log(data)
-  }, [])
-
   const lineChartData = {
     labels: labels,
     datasets: [
@@ -25,8 +19,8 @@ const Chart = () => {
         data: data,
         fill: false,
         tension: 0.4,
-        backgroundColor: "lightblue",
-        borderColor: "lightblue",
+        backgroundColor: "#6366F1",
+        borderColor: "#6366F1",
       },
     ],
   }
@@ -46,6 +40,7 @@ const Chart = () => {
     <section className="lg:max-w-6xl lg:mx-auto mt-10 hidden sm:block">
       <div className="bg-white rounded-lg">
         <div className="px-20 py-5">
+          <h1 className="text-2xl text-gray-500">2021 Inventory Reduction by Week</h1>
           <Line data={lineChartData} options={options} />
         </div>
       </div>

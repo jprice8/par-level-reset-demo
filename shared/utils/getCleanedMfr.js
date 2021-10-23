@@ -42,6 +42,7 @@ export const getCleanedMfr = (mfr) => {
   const rd = new RegExp("^RD PLASTIC*", "i")
   const sage = new RegExp("^SAGE PROD*", "i")
   const smiths = new RegExp("^SMITHS M*", "i")
+  const smithandnephew = new RegExp("^SMITH & NEPHEW*", "i")
   const stryker = new RegExp("STRYKER*", "i")
   const teleflex = new RegExp("TELEFLEX*", "i")
   const terumo = new RegExp("^TERUMO*", "i")
@@ -120,6 +121,8 @@ export const getCleanedMfr = (mfr) => {
     return "sageproducts"
   } else if (smiths.test(mfr)) {
     return "smiths-medical"
+  } else if (smithandnephew.test(mfr)) {
+    return "smith-nephew"
   } else if (alamo.test(mfr)) {
     return "tenethealth"
   } else if (icumed.test(mfr)) {

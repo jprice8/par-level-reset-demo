@@ -1,5 +1,3 @@
-import { getISOWeek } from "date-fns"
-
 export const getFormattedDate = (date) => {
   let d = new Date(date)
   let hour = parseInt(date?.substring(11, 13))

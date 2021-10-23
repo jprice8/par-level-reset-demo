@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { useSelector, useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
+import { getYear } from "date-fns"
 
 import Stepper from "../../components/reset/Stepper"
 import ParStats from "../../components/reset/ParStats"
@@ -12,6 +13,7 @@ import ResetHistoryCard from "../../components/reset/ResetHistoryCard"
 import ErrorModal from "../../shared/components/ErrorModal"
 import { updateNestedItemReset } from "../../shared/redux/parsSlice"
 import { updateSubmissionStatus } from "../../shared/redux/weeksSlice"
+import ClearbitDisclosure from '../../shared/components/ClearbitDisclosure'
 
 const ResetForm = () => {
   const {
@@ -33,6 +35,9 @@ const ResetForm = () => {
   const currentPar = pars[stepIndex - 1]
   const isUpdate = currentPar?.itemreset.resetLevel ? true : false
 
+  const currentYear = new Date().getFullYear()
+  const todaysDate = new Date().toISOString()
+
   const onBackButton = () => {
     setValue("newParLevel", "")
     setStepIndex(stepIndex - 1)
@@ -44,28 +49,27 @@ const ResetForm = () => {
   // 3. If not the final step, move to the next step
 
   const onSubmit = (data) => {
-    // Update reset 
+    // Update reset
     dispatch(
       updateNestedItemReset({
         parId: currentPar.id,
         userFirstName: user.firstName,
         userLastName: user.lastName,
         resetLevel: parseInt(data.newParLevel),
-        lastUpdated: new Date().toISOString(),
-        week: rfid,
+        lastUpdated: todaysDate,
+        week: parseInt(rfid),
+        year: parseInt(currentYear),
       })
     )
     // Update current week's submission status
-    dispatch(
-      updateSubmissionStatus({ weekNumber: parseInt(rfid) })
-    )
+    dispatch(updateSubmissionStatus({ weekNumber: parseInt(rfid) }))
     // Empty the UI input
     setValue("newParLevel", "")
 
     // If the final step in form...
     if (stepIndex === 5) {
       // Confirm to user
-      toast.success('Week completed, inventory is already looking lighter!')
+      toast.success("Week completed, inventory is already looking lighter!")
       setStepIndex(1)
       // Take user back to dashboard
       router.push("/")
@@ -131,6 +135,7 @@ const ResetForm = () => {
             <ButtonGroup stepIndex={stepIndex} onBackButton={onBackButton} />
           </form>
         </div>
+        <ClearbitDisclosure />
       </div>
     </AltNavBar>
   )

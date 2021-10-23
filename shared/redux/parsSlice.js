@@ -15,6 +15,7 @@ export const parsSlice = createSlice({
         resetLevel,
         lastUpdated,
         week,
+        year
       } = action.payload
       const existingPar = state.find((p) => p.id === parId)
       if (existingPar) {
@@ -23,6 +24,7 @@ export const parsSlice = createSlice({
         existingPar.itemreset.resetLevel = resetLevel
         existingPar.itemreset.lastUpdated = lastUpdated
         existingPar.itemreset.week = week
+        existingPar.itemreset.year = year
       }
     },
   },

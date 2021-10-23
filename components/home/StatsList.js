@@ -3,15 +3,21 @@ import React, { useState } from "react"
 import { DocumentDownloadIcon } from "@heroicons/react/outline"
 import Table from "../../shared/components/Table"
 import {
-  checkIfFlagged,
   NoFilter,
-  SelectColumnFilter,
 } from "../../shared/utils/tableHelper"
 
 import { getCleanedMfr } from '../../shared/utils/getCleanedMfr'
 import { useSelector } from "react-redux"
+import { getParsForStatList } from "../../shared/utils/dashboardStatsHelper"
+import toast from "react-hot-toast"
 
 const StatsList = () => {
+  const pars = useSelector((state) => state.pars)
+  const statsListData = getParsForStatList(pars)
+
+  const downloadHandler = () => {
+    toast.error("Export to spreadsheet function disabled for demo!")
+  }
 
   const columns = React.useMemo(() => [
     {
@@ -48,13 +54,6 @@ const StatsList = () => {
       accessor: "reductionExt",
       Filter: NoFilter,
     },
-    {
-      Header: "Flagged",
-      accessor: "flagged",
-      Filter: SelectColumnFilter,
-      filter: "equals",
-      Cell: (v) => checkIfFlagged(v.value),
-    },
   ])
 
   return (
@@ -66,13 +65,17 @@ const StatsList = () => {
               <h1 className="text-lg leading-6 font-medium text-gray-900 mr-2">
                 Reset History
               </h1>
-              <button className="items-center">
+              <button
+                type="button"
+                className="items-center"
+                onClick={downloadHandler}
+              >
                 <DocumentDownloadIcon className="h-5 w-5 text-indigo-500 hover:text-indigo-900" />
               </button>
             </div>
 
             <div className="shadow border-b border-200 sm:rounded-lg">
-              {/* <Table columns={columns} /> */}
+              <Table columns={columns} data={statsListData} />
             </div>
           </div>
         </div>

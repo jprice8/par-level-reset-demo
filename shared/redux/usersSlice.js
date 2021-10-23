@@ -4,10 +4,10 @@ const initialState = {
   id: 1,
   firstName: "Tony",
   lastName: "Soprano",
-  email: "tsoprano@memorial.com",
+  email: "tsoprano@stisaacs.com",
   title: "Director of Materials Management",
-  facility: "Memorial Hospital",
-  phone: "817-555-1234",
+  facility: "St. Isaac's Hospital",
+  phone: "917-555-0157",
   joined: new Date().toISOString(),
   profilePicture: "https://images.unsplash.com/photo-1534308143481-c55f00be8bd7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=256&h=256&q=80"
 }
