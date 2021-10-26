@@ -7,7 +7,7 @@ const Readme = () => {
   return (
     <AltNavBar>
       <div className="max-w-3xl mx-auto flex flex-col h-screen justify-between pb-20">
-        <div className="mt-20 bg-white p-4 shadow-md rounded-md space-y-4">
+        <div className="mt-20 bg-white p-10 shadow-md rounded-md space-y-4">
           <h2 className="text-center text-3xl text-gray-900 font-bold">
             Welcome!
           </h2>
@@ -50,11 +50,12 @@ const Readme = () => {
           </p>
 
           <p>
-            Special thanks to 
+            Acknowledgements to 
             
             <ul className="ml-6 list-disc">
-              <li><a href="https://clearbit.com">Clearbit</a> for their easy to use API for company logos.</li>
-              <li><a href="https://tailwindui.com">Tailwind UI</a> for the design inspiration on the frontend.</li>
+              <li><a className="hover:text-red-300 border-b-2 font-bold" href="https://unsplash.com">Unsplash</a> for the stock photos API.</li>
+              <li><a className="hover:text-red-300 border-b-2 font-bold" href="https://clearbit.com">Clearbit</a> for the company logos API.</li>
+              <li><a className="hover:text-red-300 border-b-2 font-bold" href="https://tailwindui.com">Tailwind UI</a> for the design inspiration on the frontend.</li>
             </ul>
           </p>
         </div>
