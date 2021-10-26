@@ -1,7 +1,6 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import AltNavBar from "../shared/components/AltNavBar"
-import NavBar from "../shared/components/NavBar"
 import { getFormattedDate } from "../shared/utils/dateTimeHelper"
 
 const Profile = () => {
@@ -15,8 +14,8 @@ const Profile = () => {
         <div>
           <img
             className="h-32 w-full object-cover lg:h-48"
-            src="https://source.unsplash.com/1700x200/daily?nature"
-            alt=""
+            src={user.coverPicture}
+            alt="Cover picture"
           />
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,7 +24,7 @@ const Profile = () => {
               <img
                 className="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
                 src={user.profilePicture}
-                alt="profile-picture"
+                alt="Profile picture"
               />
             </div>
             <div className="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">

@@ -12,11 +12,10 @@ import Header from "./Header"
 const navigation = [
   { name: "Dashboard", href: "/", pageName: "dashboard" },
   { name: "Reset", href: "/reset", pageName: "reset" },
+  { name: "Readme", href: "/readme", pageName: "readme" },
 ]
 const userNavigation = [
   { name: "Your Profile", href: "/profile", pageName: "profile" },
-  { name: "Settings", href: "/settings", pageName: "settings" },
-  { name: "Sign out", href: "/signout", pageName: "signOut" },
 ]
 
 const AltNavBar = ({ children }) => {
