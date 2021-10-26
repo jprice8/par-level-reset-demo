@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   id: 1,
-  firstName: "Tony",
-  lastName: "Soprano",
-  email: "tsoprano@stisaacs.com",
+  firstName: "John",
+  lastName: "Smith",
+  email: "jsmith@stisaacs.com",
   title: "Director of Materials Management",
   facility: "St. Isaac's Hospital",
   phone: "917-555-0157",

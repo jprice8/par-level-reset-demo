@@ -3,7 +3,6 @@ import { useRouter } from "next/router"
 import { useSelector, useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
-import { getYear } from "date-fns"
 
 import Stepper from "../../components/reset/Stepper"
 import ParStats from "../../components/reset/ParStats"
@@ -85,7 +84,7 @@ const ResetForm = () => {
     <AltNavBar>
       <Stepper stepIndex={stepIndex} />
 
-      <div className="sm:max-w-4xl sm:mx-auto pt-10">
+      <div className="sm:max-w-4xl sm:mx-auto pt-20">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <ParStats stepIndex={stepIndex} par={currentPar} />
@@ -102,7 +101,7 @@ const ResetForm = () => {
                   type="number"
                   name="newParLevel"
                   id="newParLevel"
-                  className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-600 rounded-md py-2 px-4"
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-400 rounded-md py-2 px-4"
                   placeholder={currentPar.currentParQty}
                   {...register("newParLevel", {
                     required: true,

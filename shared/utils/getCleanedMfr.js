@@ -37,6 +37,7 @@ export const getCleanedMfr = (mfr) => {
   const molnlycke = new RegExp("^MOLNLYCKE*", "i")
   const m3 = new RegExp("^3M*", "i")
   const neotech = new RegExp("^NEOTECH*", "i")
+  const nevro = new RegExp("^NEVRO*", "i")
   const pfizer = new RegExp("^PFIZER*", "i")
   const philips = new RegExp("^PHILIPS*", "i")
   const rd = new RegExp("^RD PLASTIC*", "i")
@@ -117,6 +118,8 @@ export const getCleanedMfr = (mfr) => {
     return "neotech"
   } else if (philips.test(mfr)) {
     return "usa.philips"
+  } else if (nevro.test(mfr)) {
+    return "nevro"
   } else if (stryker.test(mfr)) {
     return "sageproducts"
   } else if (smiths.test(mfr)) {

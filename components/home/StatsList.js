@@ -2,11 +2,10 @@ import React, { useState } from "react"
 
 import { DocumentDownloadIcon } from "@heroicons/react/outline"
 import Table from "../../shared/components/Table"
-import {
-  NoFilter,
-} from "../../shared/utils/tableHelper"
+import { NoFilter } from "../../shared/utils/tableHelper"
+import ClearbitDisclosure from "../../shared/components/ClearbitDisclosure"
 
-import { getCleanedMfr } from '../../shared/utils/getCleanedMfr'
+import { getCleanedMfr } from "../../shared/utils/getCleanedMfr"
 import { useSelector } from "react-redux"
 import { getParsForStatList } from "../../shared/utils/dashboardStatsHelper"
 import toast from "react-hot-toast"
@@ -77,6 +76,7 @@ const StatsList = () => {
             <div className="shadow border-b border-200 sm:rounded-lg">
               <Table columns={columns} data={statsListData} />
             </div>
+            <ClearbitDisclosure />
           </div>
         </div>
       </div>
