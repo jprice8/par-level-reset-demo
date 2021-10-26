@@ -48,7 +48,7 @@ const AltNavBar = ({ children }) => {
                   />
                 </div>
 
-                <div className="hidden md:block">
+                <div className="">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navigation.map((item) => (
                       <Link key={item.name} href={item.href}>
