@@ -73,7 +73,7 @@ export const getParData = () => {
       {
         id: 2,
         description: "SYSTEM, FIXATION LAPAROSCOPIC ABSORBABLE 30 SHOT",
-        mfr: "BECTON DICKINSON & CO",
+        mfr: "PHILIPS",
         unitCost: 1474.50,
         locationName: "SURGERY PAR/STOREROOM",
         locationId: "84",
@@ -316,7 +316,7 @@ export const getParData = () => {
       {
         id: 11,
         description: "CATHETER, DIAGNOSTIC ISMUS W/AUTO ID",
-        mfr: "BARD PERIPHERAL VASCULAR",
+        mfr: "PHILIPS",
         unitCost: 1716.50,
         locationName: "CARDIAC CATH LAB",
         locationId: "7",
@@ -505,7 +505,7 @@ export const getParData = () => {
       {
         id: 18,
         description: "CATHETER, DIALYSIS PALINDROME KIT 55CM 72CM",
-        mfr: "BARD PERIPHERAL VASCULAR",
+        mfr: "PHILIPS",
         unitCost: 1262.31,
         locationName: "CARDIAC CATH LAB",
         locationId: "7",

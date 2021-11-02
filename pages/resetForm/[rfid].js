@@ -71,7 +71,7 @@ const ResetForm = () => {
       toast.success("Week completed, inventory is already looking lighter!")
       setStepIndex(1)
       // Take user back to dashboard
-      router.push("/")
+      router.push("/dashboard")
     } else {
       // Confirm to user
       toast.success(`Par reset to ${data.newParLevel}!`)

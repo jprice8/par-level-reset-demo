@@ -2,20 +2,19 @@ import React, { Fragment } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import { Disclosure, Menu, Transition } from "@headlessui/react"
+import { Menu, Transition } from "@headlessui/react"
 import { useSelector } from "react-redux"
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
 import { classNames } from "../utils/classNames"
 
 import Header from "./Header"
 
 const navigation = [
-  { name: "Dashboard", href: "/", pageName: "dashboard" },
-  { name: "Reset", href: "/reset", pageName: "reset" },
-  { name: "Readme", href: "/readme", pageName: "readme" },
+  { name: "Dashboard", href: "/dashboard" },
+  { name: "Reset", href: "/reset" },
+  { name: "Readme", href: "/" },
 ]
 const userNavigation = [
-  { name: "Your Profile", href: "/profile", pageName: "profile" },
+  { name: "Your Profile", href: "/profile" },
 ]
 
 const AltNavBar = ({ children }) => {
