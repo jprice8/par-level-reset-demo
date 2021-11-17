@@ -50,38 +50,6 @@ export default function Home() {
             client using Redux. Simply refresh the browser to start over.
           </p>
 
-          <p>
-            Acknowledgements to
-            <ul className="ml-6 list-disc">
-              <li>
-                <a
-                  className="hover:text-red-300 border-b-2 font-bold"
-                  href="https://unsplash.com"
-                >
-                  Unsplash
-                </a>{" "}
-                for the stock photos API.
-              </li>
-              <li>
-                <a
-                  className="hover:text-red-300 border-b-2 font-bold"
-                  href="https://clearbit.com"
-                >
-                  Clearbit
-                </a>{" "}
-                for the company logos API.
-              </li>
-              <li>
-                <a
-                  className="hover:text-red-300 border-b-2 font-bold"
-                  href="https://tailwindui.com"
-                >
-                  Tailwind UI
-                </a>{" "}
-                for the design inspiration on the frontend.
-              </li>
-            </ul>
-          </p>
         </div>
         <div>
           <Footer />

@@ -1,6 +1,5 @@
 import React from "react"
 import Link from "next/link"
-import { ChevronRightIcon } from "@heroicons/react/outline"
 
 import StatusBadge from "./StatusBadge"
 import TrailingIcon from "./TrailingIcon"
