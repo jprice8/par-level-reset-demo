@@ -34,7 +34,7 @@ const StatsDetail = () => {
                 <img
                   className="h-24 w-24 rounded-full"
                   src={`//logo.clearbit.com/${cleanedMfr}.com`}
-                  alt="Company logo"
+                  alt={`${cleanedMfr} Logo`}
                 />
                 <span
                   className="absolute inset-0 shadow-inner rounded-full"

@@ -71,7 +71,7 @@ export const getCleanedMfr = (mfr) => {
   } else if (careline.test(mfr)) {
     return "tenethealth"
   } else if (covidien.test(mfr)) {
-    return "medtronicdiabetes"
+    return "jobs.medtronic"
   } else if (customHealtchareSystems.test(mfr)) {
     return "tenethealth"
   } else if (cryolife.test(mfr)) {
@@ -113,7 +113,7 @@ export const getCleanedMfr = (mfr) => {
   } else if (kci.test(mfr)) {
     return "3m"
   } else if (medtronic.test(mfr)) {
-    return "medtronicdiabetes"
+    return "jobs.medtronic"
   } else if (neotech.test(mfr)) {
     return "neotech"
   } else if (philips.test(mfr)) {
