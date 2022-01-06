@@ -5,6 +5,8 @@ import StatusBadge from "./StatusBadge"
 import TrailingIcon from "./TrailingIcon"
 
 const WeekRow = ({ currentWeek, weekNumber, submissionStatus }) => {
+  // console.log(`current week: ${currentWeek}`)
+  // console.log(`weekNo: ${weekNumber}`)
 
   return (
     <React.Fragment>

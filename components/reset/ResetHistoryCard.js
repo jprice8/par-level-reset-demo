@@ -4,7 +4,7 @@ import React from "react"
 const ResetHistoryCard = ({ par, user }) => {
   const targetDate = new Date(par?.itemreset?.lastUpdated)
 
-  const formattedDate = format(targetDate, 'PPPpp')
+  const formattedDate = format(targetDate, 'PPP')
 
   return (
     <div className="pt-5 sm:max-w-xl sm:mx-auto flex items-center flex-grow justify-center">

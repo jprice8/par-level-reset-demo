@@ -1,12 +1,9 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import AltNavBar from "../shared/components/AltNavBar"
-import { getFormattedDate } from "../shared/utils/dateTimeHelper"
 
 const Profile = () => {
   const user = useSelector((state) => state.users)
-
-  const { month, day, year } = getFormattedDate(user.joined)
 
   return (
     <AltNavBar>
@@ -33,7 +30,7 @@ const Profile = () => {
                   {user.firstName} {user.lastName}
                 </h1>
                 <p className="text-md font-medium text-gray-500">
-                  PLR user since {month} {day}, {year}
+                  PLR user since December 18, 2020
                 </p>
               </div>
             </div>
@@ -41,7 +38,7 @@ const Profile = () => {
               <h1 className="text-2xl font-bold text-gray-900 truncate">
                 {user.firstName} {user.lastName}
               </h1>
-              <p className="text-md font-medium text-gray-500">PLR user since {month} {day}, {year}</p>
+              <p className="text-md font-medium text-gray-500">PLR user since December 18, 2020</p>
             </div>
           </div>
         </div>

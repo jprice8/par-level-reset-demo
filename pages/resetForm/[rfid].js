@@ -34,8 +34,8 @@ const ResetForm = () => {
   const currentPar = pars[stepIndex - 1]
   const isUpdate = currentPar?.itemreset.resetLevel ? true : false
 
-  const currentYear = new Date().getFullYear()
-  const todaysDate = new Date().toISOString()
+  const currentYear = new Date('2021-2-1').getFullYear()
+  const todaysDate = new Date('2021-2-1').toISOString()
 
   const onBackButton = () => {
     setValue("newParLevel", "")

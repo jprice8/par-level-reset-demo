@@ -4,7 +4,7 @@ import { usdTwoDigits } from "../../shared/utils/currencyHelper"
 
 const DetailPanel = ({ user, reset, reductionExt }) => {
   const targetDate = new Date(reset?.itemreset?.lastUpdated)
-  const formattedDate = format(targetDate, 'PPPpp')
+  const formattedDate = format(targetDate, 'PPP')
 
   return (
     <div className="px-5 mt-10 rounded-md border-t border-gray-200">

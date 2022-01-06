@@ -32,3 +32,15 @@ export const getTimelyGreeting = () => {
 
   return greeting
 }
+
+export const getSubmissionDates = () => {
+  const submissionDates = {
+    date1: new Date('1-4-2021'),
+    date2: new Date('1-11-2021'),
+    date3: new Date('1-18-2021'),
+    date4: new Date('1-25-2021'),
+    date5: new Date('2-1-2021'),
+  }
+
+  return submissionDates
+}

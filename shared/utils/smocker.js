@@ -1,45 +1,76 @@
 import { getISOWeek, getYear, subWeeks } from "date-fns"
+import { getSubmissionDates } from "./dateTimeHelper"
 
-const date = new Date()
-const weekNumberOneWeekAgo = getISOWeek(date) - 1
-const weekNumberTwoWeeksAgo = getISOWeek(date) - 2
-const weekNumberThreeWeeksAgo = getISOWeek(date) - 3
+const submissionDates = getSubmissionDates()
+const date = new Date(submissionDates['date5'])
 const helperDateOne = subWeeks(date, 1)
 const helperDateTwo = subWeeks(date, 2)
 const helperDateThree = subWeeks(date, 3)
 const dateOneWeekAgoToday = subWeeks(date, 1).toISOString()
 const dateTwoWeeksAgoToday = subWeeks(date, 2).toISOString()
 const dateThreeWeeksAgoToday = subWeeks(date, 3).toISOString()
+const weekNumberOneWeekAgo = getISOWeek(helperDateOne)
+const weekNumberTwoWeeksAgo = getISOWeek(helperDateTwo)
+const weekNumberThreeWeeksAgo = getISOWeek(helperDateThree)
 const yearOneWeekAgoToday = getYear(helperDateOne)
 const yearTwoWeeksAgoToday = getYear(helperDateTwo)
 const yearThreeWeeksAgoToday = getYear(helperDateThree)
 
+// export const getWeekData = () => {
+//   const weekState = []
+
+//   const date = new Date()
+//   const isoWeekNumber = getISOWeek(date)
+//   for (let i = 0; i < isoWeekNumber; i++) {
+//     if (i === isoWeekNumber - 1) {
+//       weekState.push({
+//         weekNumber: i + 1,
+//         submissionStatus: "New",
+//       })
+//     } else if (i === isoWeekNumber - 2 | i === isoWeekNumber - 3 | i === isoWeekNumber - 4) {
+//       weekState.push({
+//         weekNumber: i + 1,
+//         submissionStatus: "Submitted",
+//       })
+//     } else {
+//       weekState.push({
+//         weekNumber: i + 1,
+//         submissionStatus: "Missed",
+//       })
+//     }
+//   }
+
+//   return weekState
+// }
+
 export const getWeekData = () => {
-  const weekState = []
+  const weekData = [
+    {
+      weekNumber: "1",
+      submissionStatus: "Missed",
+    },
+    {
+      weekNumber: "2",
+      submissionStatus: "Submitted",
+    },
+    {
+      weekNumber: "3",
+      submissionStatus: "Submitted",
+    },
+    {
+      weekNumber: "4",
+      submissionStatus: "Submitted",
+    },
+    {
+      weekNumber: "5",
+      submissionStatus: "New",
+    },
+  ]
 
-  const date = new Date()
-  const isoWeekNumber = getISOWeek(date)
-  for (let i = 0; i < isoWeekNumber; i++) {
-    if (i === isoWeekNumber - 1) {
-      weekState.push({
-        weekNumber: i + 1,
-        submissionStatus: "New",
-      })
-    } else if (i === isoWeekNumber - 2 | i === isoWeekNumber - 3 | i === isoWeekNumber - 4) {
-      weekState.push({
-        weekNumber: i + 1,
-        submissionStatus: "Submitted",
-      })
-    } else {
-      weekState.push({
-        weekNumber: i + 1,
-        submissionStatus: "Missed",
-      })
-    }
-  }
-
-  return weekState
+  return weekData
 }
+
+
 
 export const getParData = () => {
   const parData = [

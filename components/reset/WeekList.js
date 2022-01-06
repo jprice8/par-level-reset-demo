@@ -1,12 +1,13 @@
 import React from "react"
 import { useSelector } from "react-redux"
 
-import WeekPagination from "./WeekPagination"
 import WeekRow from "./WeekRow"
 
-const WeekList = ({ currentWeek }) => {
+const WeekList = () => {
   const weeks = useSelector((state) => state.weeks)
   const orderedWeeks = [...weeks].reverse()
+
+  console.log(orderedWeeks)
 
   const newFormLinks = []
   for (let i = 0; i < 5; i++) {
@@ -14,7 +15,7 @@ const WeekList = ({ currentWeek }) => {
       <WeekRow
         key={i}
         idx={i}
-        currentWeek={currentWeek}
+        currentWeek="5"
         weekNumber={orderedWeeks[i].weekNumber}
         submissionStatus={orderedWeeks[i].submissionStatus}
       />
