@@ -17,10 +17,6 @@ export default function Home() {
             built for a health system&apos;s supply chain team in 2021. This
             demo app was built to serve as a point of reference and to help
             visualize and explain how this process works.
-            <span className="font-semibold pl-1">
-              The data that is used within this app has been randomly generated
-              and contains no sensitive or proprietary information.
-            </span>
           </p>
 
           <h4 className="text-xl font-semibold">Background</h4>
